@@ -20,7 +20,167 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
-            background-image:url(https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcXZ2a3lxb3Y1b2ZrNzQ0YWM4N3dxbmp2cWxtcjEwc2NkOGNybzFtMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EzhnjVSyVKsUw/giphy.gif)
+            background-image:url(https://imgs.search.brave.com/SZsv7Af3jrjR3YiUCvKGye9ukwHyauKpB0Ps_u2sCFU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wcmV2/aWV3LnJlZGQuaXQv/dHVtaGFyZS1iaGFp/LWthLWJpcnRoZGF5/LWhhaS1hYWotdjAt/bm9rM2JqdDFocG1k/MS5qcGVnP3dpZHRo/PTEwODAmZm9ybWF0/PXBqcGcmYXV0bz13/ZWJwJnM9NDg4YTM4/MjZiNDdmYWNiYTE2/ZDMwM2Q2YWM3YTMz/YjIwN2FhNGFmZA);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        /* Sparkle Animation */
+        .sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: sparkleFloat 3s ease-in-out infinite;
+            opacity: 0;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        @keyframes sparkleFloat {
+            0% {
+                opacity: 0;
+                transform: translateY(0) scale(0) rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-100px) scale(1) rotate(180deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-200px) scale(0) rotate(360deg);
+            }
+        }
+
+        .star {
+            position: absolute;
+            color: #FFD700;
+            font-size: 20px;
+            animation: twinkle 2s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1.2) rotate(180deg); }
+        }
+
+        /* Heart Animation */
+        .heart {
+            position: absolute;
+            color: #ff69b4;
+            font-size: 25px;
+            animation: heartFloat 4s ease-in-out infinite;
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        @keyframes heartFloat {
+            0% {
+                opacity: 0;
+                transform: translateY(0) scale(0.5) rotate(0deg);
+            }
+            30% {
+                opacity: 0.8;
+                transform: translateY(-80px) scale(1) rotate(-10deg);
+            }
+            60% {
+                opacity: 0.8;
+                transform: translateY(-160px) scale(1.2) rotate(10deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-250px) scale(0.5) rotate(0deg);
+            }
+        }
+
+        /* Confetti Animation */
+        .confetti {
+            position: absolute;
+            width: 8px;
+            height: 12px;
+            pointer-events: none;
+            animation: confettiFall 3s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                opacity: 1;
+                transform: translateY(-20px) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(720deg);
+            }
+        }
+
+        /* Balloon Animation */
+        .balloon {
+            position: absolute;
+            font-size: 30px;
+            animation: balloonFloat 6s ease-in-out infinite;
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        @keyframes balloonFloat {
+            0% {
+                opacity: 0;
+                transform: translateY(0) translateX(0) rotate(0deg);
+            }
+            20% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100vh) translateX(50px) rotate(20deg);
+            }
+        }
+
+        /* Sparkle Trail */
+        .sparkle-trail {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: linear-gradient(45deg, #fff, #FFD700);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: sparkleTrail 2s ease-out infinite;
+            opacity: 0;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+        }
+
+        @keyframes sparkleTrail {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(var(--tx), var(--ty)) scale(0);
+            }
+        }
+
+        /* Glitter Animation */
+        .glitter {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: glitterShine 1.5s ease-in-out infinite;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 1);
+        }
+
+        @keyframes glitterShine {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1.5); }
         }
         
         .gif-container {
@@ -35,7 +195,7 @@
         }
 
         .login-container {
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
@@ -43,16 +203,62 @@
             max-width: 400px;
             position: relative;
             z-index: 10;
+            backdrop-filter: blur(10px);
+        }
+
+        .corner-gif {
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            z-index: 15;
+            animation: bounceGif 2s ease-in-out infinite;
+        }
+
+        @keyframes bounceGif {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
         }
 
         .login-container h1 {
             text-align: center;
             color: #333;
             margin-bottom: 30px;
+            animation: bounceIn 1s ease-out;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
         }
 
         .form-group {
             margin-bottom: 20px;
+            animation: slideIn 0.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        .form-group:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .form-group:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
 
         .form-group label {
@@ -68,7 +274,7 @@
             border: 2px solid #ddd;
             border-radius: 5px;
             font-size: 16px;
-            transition: border-color 0.3s;
+            transition: all 0.3s;
             color: #555;
             background: white;
             position: relative;
@@ -78,6 +284,8 @@
         .form-group input:focus {
             outline: none;
             border-color: #667eea;
+            box-shadow: 0 0 15px rgba(102, 126, 234, 0.3);
+            transform: translateY(-2px);
         }
 
         .login-btn {
@@ -90,13 +298,16 @@
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: all 0.3s;
             position: relative;
             z-index: 20;
+            animation: slideIn 0.5s ease-out 0.6s forwards;
+            opacity: 0;
         }
 
         .login-btn:hover {
             transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
         }
 
         .error-message {
@@ -105,6 +316,13 @@
             margin-top: 15px;
             font-size: 20px;
             display: none;
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
         }
 
         .error-message.show {
@@ -123,6 +341,12 @@
 
         .video-container.show {
             display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         .video-container h2 {
@@ -134,8 +358,8 @@
         .video-container video {
             width: 100%;
             border-radius: 8px;
-            aspect-ratio: 16/9;
-            object-fit: cover;
+            max-height: 70vh;
+            object-fit: contain;
         }
         
         .hint{
@@ -170,6 +394,10 @@
             .gif-container img {
                 max-width: 200px;
             }
+            
+            .video-container {
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -179,6 +407,7 @@
     </div>
 
     <div class="login-container" id="loginContainer">
+        <img src="https://i.pinimg.com/736x/24/c6/27/24c627464e8d1854977e52bda93507c7.jpg" alt="gif" class="corner-gif">
         <h1 class="birthday">Happy Birthday Dilli ke Gu!! 🤗🎂</h1>
       
         <div class="form-group">
@@ -188,27 +417,133 @@
         <div class="form-group">
             <label class="pass" for="password"><b>पासवर्ड</b></label>
             <input type="password" id="password" placeholder="Password daalo, Kacchi utaaro">
-            <p class="hint">Hint: fav couple- abhinavxvanessa</p>
+            <p class="hint" id="hintText" style="display: none;">Hint: fav couple- abhinavxvanessa</p>
         </div>
-        <button class="login-btn" onclick="handleLogin()">Dabao Mujhe</button>
+        <button class="login-btn" onclick="handleLogin()">Log In</button>
         <div class="error-message" id="errorMessage">Jaan shi se hint dekho na 😘</div>
     </div>
 
     <div class="video-container" id="videoContainer">
         <h2 class="love">Happy Birthday Love! 🥹💖</h2>
-        <p class="yaad">I miss you so baddddd 🥺💔</p>
+        <p class="yaad">Mera PYAARA Babuuuuu🥺💔</p>
        
         <video id="video" controls autoplay>
-           <source src="https://files.catbox.moe/e3e629.mp4" type="video/mp4">
-          
+           <source src="https://files.catbox.moe/gkh3ry.mp4" type="video/mp4">
         </video>
     </div>
 
     <script>
+        // Create sparkles
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.animationDelay = Math.random() * 2 + 's';
+            sparkle.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => sparkle.remove(), 3000);
+        }
+
+        // Create stars
+        function createStar() {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.innerHTML = '✨';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(star);
+        }
+
+        // Create hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            const hearts = ['❤️', '💕', '💖', '💗', '💓', '💝'];
+            heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+            document.body.appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 4000);
+        }
+
+        // Create confetti
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24', '#f0932b', '#eb4d4b', '#6c5ce7', '#a29bfe'];
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.left = Math.random() * 100 + '%';
+            confetti.style.animationDelay = Math.random() * 2 + 's';
+            confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            document.body.appendChild(confetti);
+            
+            setTimeout(() => confetti.remove(), 3000);
+        }
+
+        // Create balloons
+        function createBalloon() {
+            const balloon = document.createElement('div');
+            balloon.className = 'balloon';
+            const balloons = ['🎈', '🎉', '🎊', '🎁', '🎀'];
+            balloon.innerHTML = balloons[Math.floor(Math.random() * balloons.length)];
+            balloon.style.left = Math.random() * 90 + '%';
+            balloon.style.bottom = '-50px';
+            balloon.style.animationDelay = Math.random() * 3 + 's';
+            balloon.style.animationDuration = (Math.random() * 3 + 5) + 's';
+            document.body.appendChild(balloon);
+            
+            setTimeout(() => balloon.remove(), 8000);
+        }
+
+        // Create sparkle trail
+        function createSparkleTrail() {
+            const trail = document.createElement('div');
+            trail.className = 'sparkle-trail';
+            trail.style.left = Math.random() * 100 + '%';
+            trail.style.top = Math.random() * 100 + '%';
+            trail.style.setProperty('--tx', (Math.random() - 0.5) * 200 + 'px');
+            trail.style.setProperty('--ty', (Math.random() - 0.5) * 200 + 'px');
+            trail.style.animationDelay = Math.random() + 's';
+            document.body.appendChild(trail);
+            
+            setTimeout(() => trail.remove(), 2000);
+        }
+
+        // Create glitter
+        function createGlitter() {
+            const glitter = document.createElement('div');
+            glitter.className = 'glitter';
+            glitter.style.left = Math.random() * 100 + '%';
+            glitter.style.top = Math.random() * 100 + '%';
+            glitter.style.animationDelay = Math.random() + 's';
+            document.body.appendChild(glitter);
+        }
+
+        // Generate all animations
+        setInterval(createSparkle, 300);
+        setInterval(createHeart, 800);
+        setInterval(createConfetti, 400);
+        setInterval(createBalloon, 2000);
+        setInterval(createSparkleTrail, 500);
+        
+        // Create initial static elements
+        for (let i = 0; i < 20; i++) {
+            createStar();
+        }
+        
+        for (let i = 0; i < 30; i++) {
+            createGlitter();
+        }
+
         function handleLogin() {
             const name = document.getElementById('name').value;
             const password = document.getElementById('password').value;
             const errorMessage = document.getElementById('errorMessage');
+            const hintText = document.getElementById('hintText');
             const loginContainer = document.getElementById('loginContainer');
             const videoContainer = document.getElementById('videoContainer');
             const gifContainer = document.getElementById('gifContainer');
@@ -222,6 +557,7 @@
                 video.play();
             } else {
                 errorMessage.classList.add('show');
+                hintText.style.display = 'block';
             }
         }
 
@@ -239,9 +575,4 @@
         });
     </script>
 </body>
-
 </html>
-
-
-
-
